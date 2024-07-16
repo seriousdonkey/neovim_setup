@@ -2,14 +2,16 @@ return {
   {
     "williamboman/mason.nvim",
     config = function()
-      require("mason").setup()
+      require("mason").setup({
+        ensure_installed = {"prettierd"}
+      })
     end
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "gopls"}
+        ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "gopls", "tailwindcss"}
       })
     end
   },
@@ -21,6 +23,7 @@ return {
       lspconfig.tsserver.setup({})
       lspconfig.rust_analyzer.setup({})
       lspconfig.gopls.setup({})
+      lspconfig.tailwindcss.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
