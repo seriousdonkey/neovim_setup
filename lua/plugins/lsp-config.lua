@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "gopls", "tailwindcss"}
+        ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "gopls", "tailwindcss", "clangd"}
       })
     end
   },
@@ -24,6 +24,7 @@ return {
       lspconfig.rust_analyzer.setup({})
       lspconfig.gopls.setup({})
       lspconfig.tailwindcss.setup({})
+      lspconfig.clangd.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
