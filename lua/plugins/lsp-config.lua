@@ -36,9 +36,6 @@ return {
         -- Add references to quickfix list and open it
         vim.fn.setqflist({}, ' ', options)
         vim.api.nvim_command('copen')
-
-        -- Jump to the first entry in the quickfix list
-        vim.api.nvim_command('cc')  
       end
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
