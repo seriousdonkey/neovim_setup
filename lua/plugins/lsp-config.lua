@@ -36,6 +36,9 @@ return {
         -- Add references to quickfix list and open it
         vim.fn.setqflist({}, ' ', options)
         vim.api.nvim_command('copen')
+      
+        -- Map <CR> (Enter) in quickfix window to first jump and then close the window
+        vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<CR>:cclose<CR>', { noremap = true, silent = true })
       end
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
