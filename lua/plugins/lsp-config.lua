@@ -17,6 +17,9 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = true }
+    },
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
@@ -28,9 +31,23 @@ return {
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
+      -- Define the 'on_list' function to handle references
+      local function on_list(options)
+        -- Add references to quickfix list and open it
+        vim.fn.setqflist({}, ' ', options)
+        vim.api.nvim_command('copen')
+
+        -- Jump to the first entry in the quickfix list
+        vim.api.nvim_command('cc')  
+      end
+
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
       vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+
+      vim.keymap.set('n', '<C-l>', function() 
+        vim.lsp.buf.references(nil, { on_list = on_list })
+      end, { noremap = true, silent = true })
 
     end
   }
