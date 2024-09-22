@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "gopls", "tailwindcss", "clangd"}
+        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd"}
       })
     end
   },
@@ -23,7 +23,7 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
-      lspconfig.tsserver.setup({})
+      lspconfig.ts_ls.setup({})
       lspconfig.rust_analyzer.setup({})
       lspconfig.gopls.setup({})
       lspconfig.tailwindcss.setup({})
@@ -36,7 +36,6 @@ return {
         -- Add references to quickfix list and open it
         vim.fn.setqflist({}, ' ', options)
         vim.api.nvim_command('copen')
-      
         -- Map <CR> (Enter) in quickfix window to first jump and then close the window
         vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<CR>:cclose<CR>', { noremap = true, silent = true })
       end
