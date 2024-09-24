@@ -3,7 +3,7 @@ return {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup({
-        ensure_installed = {"prettierd"}
+        ensure_installed = { "prettierd" }
       })
     end
   },
@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd"}
+        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "angularls", "html", "cssls" }
       })
     end
   },
@@ -28,6 +28,7 @@ return {
       lspconfig.gopls.setup({})
       lspconfig.tailwindcss.setup({})
       lspconfig.clangd.setup({})
+      lspconfig.angularls.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
@@ -42,12 +43,11 @@ return {
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
 
-      vim.keymap.set('n', '<C-l>', function() 
+      vim.keymap.set('n', '<C-l>', function()
         vim.lsp.buf.references(nil, { on_list = on_list })
       end, { noremap = true, silent = true })
-
     end
   }
 }
