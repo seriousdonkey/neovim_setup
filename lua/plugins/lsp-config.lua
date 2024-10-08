@@ -21,6 +21,9 @@ return {
       inlay_hints = { enabled = true }
     },
     config = function()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
       lspconfig.ts_ls.setup({})
@@ -29,6 +32,12 @@ return {
       lspconfig.tailwindcss.setup({})
       lspconfig.clangd.setup({})
       lspconfig.angularls.setup({})
+      lspconfig.html.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.cssls.setup({
+        capabilities = capabilities,
+      })
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
