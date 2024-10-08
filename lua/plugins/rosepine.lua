@@ -3,7 +3,7 @@ return {
     "rose-pine/neovim",
     name = "rose-pine",
     lazy = false,    -- load immediately
-    priority = 1000, -- ensure it loads before other plugins
+    priority = 1002, -- ensure it loads before other plugins
     config = function()
       -- Optional setup configuration for Rose Pine theme
       require('rose-pine').setup({
