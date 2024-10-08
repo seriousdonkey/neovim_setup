@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "angularls", "html", "cssls" }
+        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "angularls", "html", "cssls", "emmet_language_server" }
       })
     end
   },
@@ -37,6 +37,9 @@ return {
       })
       lspconfig.cssls.setup({
         capabilities = capabilities,
+      })
+      lspconfig.emmet_language_server.setup({
+        filetypes = {"css", "html", "less", "sass", "scss"}
       })
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
