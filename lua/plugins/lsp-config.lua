@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls"  }
+        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls" }
       })
     end
   },
@@ -38,7 +38,7 @@ return {
         capabilities = capabilities,
       })
       lspconfig.emmet_language_server.setup({
-        filetypes = {"css", "html", "less", "sass", "scss"}
+        filetypes = { "css", "html", "less", "sass", "scss", "javascript", "javascriptreact", "typescriptreact" }
       })
       lspconfig.angularls.setup({
         filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
