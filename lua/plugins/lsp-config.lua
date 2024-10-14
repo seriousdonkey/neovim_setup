@@ -46,23 +46,10 @@ return {
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
-      -- Define the 'on_list' function to handle references
-      local function on_list(options)
-        -- Add references to quickfix list and open it
-        vim.fn.setqflist({}, ' ', options)
-        vim.api.nvim_command('copen')
-        -- Map <CR> (Enter) in quickfix window to first jump and then close the window
-        vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<CR>:cclose<CR>', { noremap = true, silent = true })
-      end
-
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
       vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, {})
-
-      vim.keymap.set('n', '<C-l>', function()
-        vim.lsp.buf.references(nil, { on_list = on_list })
-      end, { noremap = true, silent = true })
     end
   }
 }

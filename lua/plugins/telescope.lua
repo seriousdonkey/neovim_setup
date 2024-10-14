@@ -6,7 +6,8 @@ return {
     config = function()
       require("telescope").setup({
         defaults = {
-         file_ignore_patterns = { "node_modules", "dist", "build" }
+          file_ignore_patterns = { "node_modules", "dist", "build" },
+          initial_mode = "normal"
         }
       })
 
@@ -15,6 +16,7 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+      vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
     end
   },
   {
