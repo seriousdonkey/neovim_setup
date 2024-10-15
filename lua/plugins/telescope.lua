@@ -6,8 +6,8 @@ return {
     config = function()
       require("telescope").setup({
         defaults = {
-          file_ignore_patterns = { "node_modules", "dist", "build" },
-          initial_mode = "normal"
+          file_ignore_patterns = { "node_modules", "dist", "build", "target" },
+          initial_mode = "insert"
         }
       })
 
