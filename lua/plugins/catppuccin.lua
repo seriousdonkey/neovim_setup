@@ -22,6 +22,6 @@ return {
         -- Add more integrations based on what you need
       },
     })
-    vim.cmd.colorscheme "catppuccin-macchiato"
+    vim.cmd.colorscheme "catppuccin-frappe"
   end,
 }
