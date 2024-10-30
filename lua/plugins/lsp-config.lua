@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls" }
+        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls", "denols" }
       })
     end
   },
@@ -26,7 +26,10 @@ return {
 
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
-      lspconfig.ts_ls.setup({})
+      lspconfig.ts_ls.setup({
+        root_dir = lspconfig.util.root_pattern("package.json"),
+        single_file_support = false
+      })
       lspconfig.rust_analyzer.setup({})
       lspconfig.gopls.setup({})
       lspconfig.tailwindcss.setup({})
@@ -42,6 +45,9 @@ return {
       })
       lspconfig.angularls.setup({
         filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
+      })
+      lspconfig.denols.setup({
+        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
       })
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
