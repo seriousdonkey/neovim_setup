@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls", "denols" }
+        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls", "pyright", "mesonlsp", "htmx" }
       })
     end
   },
@@ -46,9 +46,9 @@ return {
       lspconfig.angularls.setup({
         filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
       })
-      lspconfig.denols.setup({
-        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-      })
+      lspconfig.pyright.setup({})
+      lspconfig.mesonlsp.setup({})
+      lspconfig.htmx.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
