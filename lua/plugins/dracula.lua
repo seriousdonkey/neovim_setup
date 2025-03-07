@@ -12,5 +12,5 @@ return {
     -- Apply the theme
     vim.cmd.colorscheme("dracula")
   end,
-  priority = 1000, -- High priority to load this theme first
+  priority = 1001, -- High priority to load this theme first
 }
