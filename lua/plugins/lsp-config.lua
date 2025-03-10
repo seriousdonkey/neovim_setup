@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "rust_analyzer", "gopls", "tailwindcss", "clangd", "html", "cssls", "emmet_language_server", "angularls", "pyright", "mesonlsp", "htmx" }
+        ensure_installed = { "lua_ls", "ts_ls", "gopls", "tailwindcss", "html", "cssls", "emmet_language_server", "angularls", "mesonlsp" }
       })
     end
   },
@@ -30,10 +30,8 @@ return {
         root_dir = lspconfig.util.root_pattern("package.json"),
         single_file_support = false
       })
-      lspconfig.rust_analyzer.setup({})
       lspconfig.gopls.setup({})
       lspconfig.tailwindcss.setup({})
-      lspconfig.clangd.setup({})
       lspconfig.html.setup({
         capabilities = capabilities
       })
@@ -44,11 +42,14 @@ return {
         filetypes = { "css", "html", "less", "sass", "scss", "javascript", "javascriptreact", "typescriptreact" }
       })
       lspconfig.angularls.setup({
-        filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' }
+        filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
+        root_dir = function(fname)
+          vim.notify('Root dir called', vim.log.levels.INFO)
+          local util = require 'lspconfig.util'
+          return util.root_pattern 'nx.json' (fname) or util.find_git_ancestor(fname)
+        end,
       })
-      lspconfig.pyright.setup({})
       lspconfig.mesonlsp.setup({})
-      lspconfig.htmx.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
