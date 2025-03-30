@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "gopls", "tailwindcss", "html", "cssls", "emmet_language_server", "angularls", "mesonlsp" }
+        ensure_installed = { "lua_ls", "ts_ls", "gopls", "tailwindcss", "html", "cssls", "emmet_language_server", "angularls", "mesonlsp", "templ", "htmx", "svelte" }
       })
     end
   },
@@ -44,12 +44,14 @@ return {
       lspconfig.angularls.setup({
         filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
         root_dir = function(fname)
-          vim.notify('Root dir called', vim.log.levels.INFO)
           local util = require 'lspconfig.util'
           return util.root_pattern 'nx.json' (fname) or util.find_git_ancestor(fname)
         end,
       })
       lspconfig.mesonlsp.setup({})
+      lspconfig.templ.setup({})
+      lspconfig.htmx.setup({})
+      lspconfig.svelte.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
