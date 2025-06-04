@@ -23,6 +23,9 @@ return {
         suggestion.accept()
         autopairs.enable()
       end, { desc = 'Accept Copilot suggestion' })
+      vim.keymap.set('i', '<C-U>', function()
+        suggestion.accept()
+      end, { desc = 'Accept Copilot suggestion' })
     end,
   },
 }

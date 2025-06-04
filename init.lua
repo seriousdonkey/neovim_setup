@@ -23,3 +23,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.o.title = true
+vim.o.titlestring = "nvim – " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
