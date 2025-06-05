@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "gopls", "tailwindcss", "html", "cssls", "emmet_language_server", "angularls", "mesonlsp", "templ", "htmx", "svelte", "clangd" }
+        ensure_installed = { "lua_ls", "ts_ls", "gopls", "tailwindcss", "html", "cssls", "emmet_language_server", "angularls", "mesonlsp", }
       })
     end
   },
@@ -30,7 +30,7 @@ return {
         root_dir = lspconfig.util.root_pattern("package.json"),
         single_file_support = false
       })
-      lspconfig.gopls.setup({})
+      -- lspconfig.gopls.setup({})
       lspconfig.tailwindcss.setup({})
       lspconfig.html.setup({
         capabilities = capabilities
@@ -41,24 +41,17 @@ return {
       lspconfig.emmet_language_server.setup({
         filetypes = { "css", "html", "less", "sass", "scss", "javascript", "javascriptreact", "typescriptreact" }
       })
-      lspconfig.angularls.setup({
-
-      })
       -- lspconfig.angularls.setup({
-      --   filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
-      --   root_dir = function(fname)
-      --     local util = require 'lspconfig.util'
-      --     return util.root_pattern 'nx.json' (fname) or util.find_git_ancestor(fname)
-      --   end,
+      --
       -- })
-      lspconfig.mesonlsp.setup({})
-      lspconfig.templ.setup({})
-      lspconfig.htmx.setup({})
-      lspconfig.svelte.setup({})
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-        cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu" }
+      lspconfig.angularls.setup({
+        filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
+        root_dir = function(fname)
+          local util = require 'lspconfig.util'
+          return util.root_pattern 'nx.json' (fname) or util.find_git_ancestor(fname)
+        end,
       })
+      lspconfig.mesonlsp.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
 
