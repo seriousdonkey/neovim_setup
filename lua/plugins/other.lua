@@ -5,7 +5,8 @@ return {
     config = function()
       require("other-nvim").setup({
         mappings = {
-          "angular"
+          "angular",
+          "go",
         },
         transformers = {
           lowercase = function(inputString)
