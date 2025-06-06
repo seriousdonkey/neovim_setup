@@ -41,16 +41,16 @@ return {
       lspconfig.emmet_language_server.setup({
         filetypes = { "css", "html", "less", "sass", "scss", "javascript", "javascriptreact", "typescriptreact" }
       })
-      -- lspconfig.angularls.setup({
-      --
-      -- })
       lspconfig.angularls.setup({
-        filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
-        root_dir = function(fname)
-          local util = require 'lspconfig.util'
-          return util.root_pattern 'nx.json' (fname) or util.find_git_ancestor(fname)
-        end,
+
       })
+      -- lspconfig.angularls.setup({
+      --   filetypes = { 'typescript', 'html', 'typescriptreact', 'typescript.tsx', 'htmlangular' },
+      --   root_dir = function(fname)
+      --     local util = require 'lspconfig.util'
+      --     return util.root_pattern 'nx.json' (fname) or util.find_git_ancestor(fname)
+      --   end,
+      -- })
       lspconfig.mesonlsp.setup({})
       -- lspconfig.golines.setup({})
       -- lspconfig.gofumpt.setup({})
@@ -64,7 +64,7 @@ return {
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set({ 'n', 'v' }, '<leader>da', vim.lsp.buf.code_action, {})
       vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, {})
     end
   }
